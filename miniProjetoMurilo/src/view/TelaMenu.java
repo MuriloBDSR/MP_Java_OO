@@ -22,11 +22,11 @@ public class TelaMenu implements ActionListener {
 	 * Cria a tela inicial do programa
 	 */
 	public TelaMenu() {
-		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setBounds(100, 20, 300, 30);
-		patrimonio.setBounds(90, 80, 200, 30);
-		listaTangivel.setBounds(90, 120, 200, 30);
-		listaIntangivel.setBounds(90, 160, 200, 30);
+		titulo.setFont(new Font("Arial", Font.BOLD, 50));
+		titulo.setBounds(425, 100, 600, 70);
+		patrimonio.setBounds(460, 250, 400, 60);
+		listaTangivel.setBounds(460, 350, 400, 60);
+		listaIntangivel.setBounds(460, 450, 400, 60);
 			
 		patrimonio.addActionListener(this);
 		listaTangivel.addActionListener(this);
@@ -39,8 +39,9 @@ public class TelaMenu implements ActionListener {
 		janela.add(listaTangivel);
 		janela.add(listaIntangivel);
 		
-		janela.setSize(400, 250);
+		janela.setExtendedState(janela.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.setResizable(false);
 		janela.setVisible(true);
 	}
 	/**
@@ -48,8 +49,7 @@ public class TelaMenu implements ActionListener {
 	 * @param args 
 	 */
 	public static void main(String[] args) {
-		new TelaMenu();
-		
+		new TelaMenu();		
 	}
 	/**
 	 * Responsável pela resposta dos botões

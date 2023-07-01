@@ -54,17 +54,17 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 			listaPatrimonio = new ControleTangivel(armazem).getNomeTangivel();
 			listaTangivel = new JList<String>(listaPatrimonio);
 					
-			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(280, 20, 300, 30);
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(450, 20, 400, 30);
 			
-			listaTangivel.setBounds(20, 140, 750, 450);
+			listaTangivel.setBounds(200, 140, 750, 450);
 			listaTangivel.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaTangivel.setVisibleRowCount(10);
 			listaTangivel.addListSelectionListener(this);
 			
 			refreshTangivel = new JButton("Refresh");
 			refreshTangivel.addActionListener(this);
-			refreshTangivel.setBounds(200, 600, 360, 30);
+			refreshTangivel.setBounds(395, 600, 360, 30);
 			
 			janela.setLayout(null);
 			janela.add(titulo);
@@ -78,44 +78,45 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 			listaPatrimonio = new ControleIntangivel(armazem).getNomeIntangivel();
 			listaIntangivel = new JList<String>(listaPatrimonio);
 					
-			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(280, 20, 300, 30);
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(450, 20, 400, 30);
 			
-			listaIntangivel.setBounds(20, 140, 750, 450);
+			listaIntangivel.setBounds(200, 140, 750, 450);
 			listaIntangivel.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaIntangivel.setVisibleRowCount(10);
 			listaIntangivel.addListSelectionListener(this);
 		
 			refreshIntangivel = new JButton("Refresh");
 			refreshIntangivel.addActionListener(this);
-			refreshIntangivel.setBounds(200, 600, 360, 30);
+			refreshIntangivel.setBounds(395, 600, 360, 30);
 				
 			janela.setLayout(null);
 			janela.add(titulo);
 			janela.add(listaIntangivel);
 			janela.add(refreshIntangivel);
 			
-			janela.setSize(800, 700);
+			janela.setExtendedState(janela.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 			janela.setVisible(true);
+			janela.setResizable(false);
 			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 		filtroLabel = new JLabel("Procurar patrimonio por nome");
 		filtroLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-		filtroLabel.setBounds(20, 100, 200, 30);
+		filtroLabel.setBounds(200, 100, 200, 30);
 		filtroText = new JTextField();
-		filtroText.setBounds(220, 100, 440, 30);
+		filtroText.setBounds(400, 100, 440, 30);
 		filtroButton = new JButton("Filtrar");
 		filtroButton.addActionListener(this);
-		filtroButton.setBounds(670, 100, 100, 30);
+		filtroButton.setBounds(850, 100, 100, 30);
 		
 		
 		addPatrimonio = new JButton("Adicionar Patri");
 		addPatrimonio.addActionListener(this);
-		addPatrimonio.setBounds(20,600,180,30);
+		addPatrimonio.setBounds(200,600,180,30);
 		
 		retorno = new JButton("Voltar");
 		retorno.addActionListener(this);
-		retorno.setBounds(560, 600, 180, 30);
+		retorno.setBounds(770, 600, 180, 30);
 		
 		janela.add(filtroLabel);
 		janela.add(filtroText);

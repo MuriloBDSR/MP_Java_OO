@@ -189,13 +189,14 @@ public class TelaEdicao implements ActionListener{
 		}
 		if(src == remove) {
 			boolean res = true;
-			if(opcao == 1)
+			if(opcao == 1) {
 				armazem.removerTangivel(posicao);
 			if (res) {
 				mensagemSucessoDeletacao();
 				janela.dispose();
 			}else {
 				mensagemErroDeletacao();	
+			}
 			}
 			if(opcao == 2) {
 				res = armazem.removerIntangivel(posicao);
@@ -205,22 +206,21 @@ public class TelaEdicao implements ActionListener{
 				}else {
 					mensagemErroDeletacao();	
 				}
-				
 			}
-				
-		}
+			}
 		if(src == info) {
-			if(opcao == 1)
+			if(opcao == 1) {
 				JOptionPane.showMessageDialog(null,"Informação do Patrimonio: \n" +
 			armazem.getTangivel()[posicao].imprimir(), null, 
 						JOptionPane.INFORMATION_MESSAGE);
 			}
-			if(opcao == 2) {
+		else if(opcao == 2) {
 				JOptionPane.showMessageDialog(null,"Informação do Patrimonio: \n" +
 			armazem.getIntangivel()[posicao].imprimir(), null, 
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
+	}
 	/**
 	 * Mensagem de sucessso para edição do objeto
 	 */
