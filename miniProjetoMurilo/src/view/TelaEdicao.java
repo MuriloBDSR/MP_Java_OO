@@ -147,7 +147,7 @@ public class TelaEdicao implements ActionListener{
 		
 		//define a janela(JFrame)
 		janela.setLayout(null);
-		janela.setSize(400, 700);
+		janela.setSize(400, 500);
 		janela.setVisible(true);
 	}
 

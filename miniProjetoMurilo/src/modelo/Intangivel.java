@@ -5,7 +5,7 @@ package modelo;
  * @since 2023
  */
 public class Intangivel extends Patrimonio{
-	private String tipo = "Inatangivel";
+	private String tipo = "Intangivel";
 	private String ambiente;
 	private String expiracao;
 /**

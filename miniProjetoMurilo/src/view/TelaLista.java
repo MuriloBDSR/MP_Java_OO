@@ -11,8 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -26,6 +28,8 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 	private static ControleArmazem armazem;
 	private JFrame janela = new JFrame("Lista de Patrimonio");
 	private JLabel titulo = new JLabel("Lista de seus patrimonios");
+	private JLabel subtituloT = new JLabel("Tangivel");
+	private JLabel subtituloI = new JLabel("Intangivel");
 	private JTextField filtroText;
 	private JLabel filtroLabel;
 	private JButton filtroButton;
@@ -37,6 +41,7 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 	private JList<String> listaIntangivel;
 	private String[] listaPatrimonio;
 	private int opcao;
+	private JScrollPane scroll;
 	
 	/**
 	 * Construtor da TelaLista, ela apresenta a janela com as Listas e
@@ -48,81 +53,86 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 		armazem = a;
 		opcao = o;
 		
-		switch(o) {
-		
-		case 1:
+		if(opcao ==  1) {
 			listaPatrimonio = new ControleTangivel(armazem).getNomeTangivel();
 			listaTangivel = new JList<String>(listaPatrimonio);
-					
-			titulo.setFont(new Font("Arial", Font.BOLD, 30));
-			titulo.setBounds(450, 20, 400, 30);
+	
+			subtituloT.setFont(new Font("Arial", Font.BOLD, 30));
+			subtituloT.setBounds(600, 80, 400, 40);
 			
-			listaTangivel.setBounds(200, 140, 750, 450);
+			listaTangivel.setBounds(300, 200, 750, 450);
 			listaTangivel.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaTangivel.setVisibleRowCount(10);
 			listaTangivel.addListSelectionListener(this);
-			
+			listaTangivel.setFixedCellHeight(25);
+			scroll = new JScrollPane(listaTangivel);
+						
 			refreshTangivel = new JButton("Refresh");
 			refreshTangivel.addActionListener(this);
-			refreshTangivel.setBounds(395, 600, 360, 30);
+			refreshTangivel.setBounds(495, 660, 360, 30);
 			
-			janela.setLayout(null);
-			janela.add(titulo);
-			janela.add(listaTangivel);
+			//janela.add(listaTangivel);
 			janela.add(refreshTangivel);
-	
-			janela.setSize(800, 700);
-			janela.setVisible(true);
-			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		case 2:
+			janela.add(subtituloT);
+		}
+		if(opcao == 2) {
 			listaPatrimonio = new ControleIntangivel(armazem).getNomeIntangivel();
 			listaIntangivel = new JList<String>(listaPatrimonio);
-					
-			titulo.setFont(new Font("Arial", Font.BOLD, 30));
-			titulo.setBounds(450, 20, 400, 30);
+	
+			subtituloI.setFont(new Font("Arial", Font.BOLD, 30));
+			subtituloI.setBounds(590, 80, 400, 40);
 			
-			listaIntangivel.setBounds(200, 140, 750, 450);
+			listaIntangivel.setBounds(300, 200, 750, 450);
 			listaIntangivel.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaIntangivel.setVisibleRowCount(10);
 			listaIntangivel.addListSelectionListener(this);
+			listaIntangivel.setFixedCellHeight(25);
+			scroll = new JScrollPane(listaIntangivel);
 		
 			refreshIntangivel = new JButton("Refresh");
 			refreshIntangivel.addActionListener(this);
-			refreshIntangivel.setBounds(395, 600, 360, 30);
+			refreshIntangivel.setBounds(495, 660, 360, 30);
 				
-			janela.setLayout(null);
-			janela.add(titulo);
-			janela.add(listaIntangivel);
+			//janela.add(listaIntangivel);
 			janela.add(refreshIntangivel);
-			
-			janela.setExtendedState(janela.getExtendedState()|JFrame.MAXIMIZED_BOTH);
-			janela.setVisible(true);
-			janela.setResizable(false);
-			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			janela.add(subtituloI);
 	}
+		titulo.setFont(new Font("Arial", Font.BOLD, 30));
+		titulo.setBounds(480, 40, 400, 30);
+		
 		filtroLabel = new JLabel("Procurar patrimonio por nome");
 		filtroLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-		filtroLabel.setBounds(200, 100, 200, 30);
+		filtroLabel.setBounds(300, 160, 200, 30);
 		filtroText = new JTextField();
-		filtroText.setBounds(400, 100, 440, 30);
+		filtroText.setBounds(500, 160, 440, 30);
 		filtroButton = new JButton("Filtrar");
 		filtroButton.addActionListener(this);
-		filtroButton.setBounds(850, 100, 100, 30);
+		filtroButton.setBounds(950, 160, 100, 30);
 		
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setBounds(300, 200, 750, 450);
 		
-		addPatrimonio = new JButton("Adicionar Patri");
+		addPatrimonio = new JButton("Novo Patrimônio");
 		addPatrimonio.addActionListener(this);
-		addPatrimonio.setBounds(200,600,180,30);
+		addPatrimonio.setBounds(300,660,180,30);
 		
-		retorno = new JButton("Voltar");
+		retorno = new JButton("Trocar Lista");
 		retorno.addActionListener(this);
-		retorno.setBounds(770, 600, 180, 30);
+		retorno.setBounds(870, 660, 180, 30);
 		
+		janela.add(scroll);
+		janela.add(titulo);
 		janela.add(filtroLabel);
 		janela.add(filtroText);
 		janela.add(filtroButton);
 		janela.add(addPatrimonio);
 		janela.add(retorno);
+		
+		janela.setLayout(null);
+		janela.setExtendedState(janela.getExtendedState()|JFrame.MAXIMIZED_BOTH);
+		janela.setVisible(true);
+		janela.setResizable(false);
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/**
