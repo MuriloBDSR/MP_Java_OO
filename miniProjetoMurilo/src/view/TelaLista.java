@@ -21,7 +21,7 @@ import javax.swing.event.ListSelectionListener;
 /**
  * Tela com as listas de patrimônios
  * @author Murilo Brandão de Souza Rodrigues
- * @Since 2023
+ * @since 2023
  */
 public class TelaLista implements ActionListener, ListSelectionListener{
 	
@@ -89,14 +89,14 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 			listaIntangivel.setFixedCellHeight(25);
 			scroll = new JScrollPane(listaIntangivel);
 		
-			refreshIntangivel = new JButton("Refresh");
+			refreshIntangivel = new JButton("Atualizar");
 			refreshIntangivel.addActionListener(this);
 			refreshIntangivel.setBounds(495, 660, 360, 30);
 				
 			//janela.add(listaIntangivel);
 			janela.add(refreshIntangivel);
 			janela.add(subtituloI);
-	}
+		}
 		titulo.setFont(new Font("Arial", Font.BOLD, 30));
 		titulo.setBounds(480, 40, 400, 30);
 		
@@ -134,7 +134,6 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 		janela.setResizable(false);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 	/**
 	 * Responsável por detectar os botões da TelaLista 
 	 */
@@ -143,15 +142,18 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 		Object src = e.getSource();
 		
 		if(src == filtroButton) {
+			boolean res = false;
 			if(opcao == 1) {
-				armazem.buscarTangivel(filtroText.getText());
-				JOptionPane.showMessageDialog(null,"o valor inserido foi:\n" + filtroText.getText()
-				,null, JOptionPane.INFORMATION_MESSAGE);
+				res = armazem.buscarTangivel(filtroText.getText());
+				if(res == false){
+					mensagemErroFiltrar();
+				}
 				}	
 			else if(opcao == 2) {
-				armazem.buscarIntangivel(filtroText.getText());
-				JOptionPane.showMessageDialog(null,"o valor inserido foi:\n"+  filtroText.getText()
-				,null, JOptionPane.INFORMATION_MESSAGE);
+				res = armazem.buscarIntangivel(filtroText.getText());
+				if(res == false){
+					mensagemErroFiltrar();
+				}
 			}
 		}
 		if(src == addPatrimonio){
@@ -175,7 +177,7 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 	}
 	
 	/**
-	 * Responsável por detectar a seleção de algum objeto dentro
+	 * esponsável por detectar a seleção de algum objeto dentro
 	 * da JList como os patrimonios
 	 */
 	@Override
@@ -189,5 +191,15 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 		if(e.getValueIsAdjusting() && src == listaIntangivel) {
 			new TelaEdicao(2, armazem, listaIntangivel.getSelectedIndex());
 		}
+	}
+	/**
+	 * Mensegem quando a pesquisa corresponde a nenhum item da lista
+	 */
+	public void mensagemErroFiltrar() {
+		JOptionPane.showMessageDialog(null,"NENHUM PATRIMONIO ENCONTRADO! \n"
+		+ "Nenhum Patrimonio da lista possue esse nome \n" 
+		+ "Confirme se o nome foi digitado corretamente \n"
+		+ "(inclusive os caracteres mauiusculos, minusculos e especiais)"
+		,null, JOptionPane.ERROR_MESSAGE);
 	}
 }

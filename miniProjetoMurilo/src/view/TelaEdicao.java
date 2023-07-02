@@ -26,16 +26,20 @@ public class TelaEdicao implements ActionListener{
 	private JLabel nomeAnotacoes = new JLabel("Anotações:");
 	private JTextField valor;
 	private JLabel nomeValor = new JLabel("Valor:");
+	private JTextField pessoa;
+	private JLabel nomePessoa = new JLabel("Pessoa:");
 	private JTextField local;
 	private JTextField ambiente;
 	private JLabel nomeAmbienteElocal;
 	private JTextField expiracao;
-	private JTextField quantidade;
+	private JTextField quantidade;	
+
 	private JLabel nomeExpiracaoeQuantidade;
 	private JButton confirmacao = new JButton("Confirmar");
 	private String[] novosDados = new String[9];
 	private JButton remove = new JButton("Deletar");
 	private JButton info = new JButton("Info");
+
 	
 /**
  * Construtor da classe TelaEdicao
@@ -55,6 +59,7 @@ public class TelaEdicao implements ActionListener{
 			Patrimonio = new JTextField(armazem.getIntangivel()[posicao].getNome());
 			anotacoes = new JTextField(armazem.getIntangivel()[posicao].getAnotacoes());
 			valor = new JTextField(String.valueOf(armazem.getIntangivel()[posicao].getValor()));
+			pessoa = new JTextField(armazem.getIntangivel()[posicao].getPessoa());
 			ambiente = new JTextField(armazem.getIntangivel()[posicao].getAmbiente());
 			expiracao = new JTextField(armazem.getIntangivel()[posicao].getExpiracao());
 			nomeAmbienteElocal = new JLabel("Ambiente:");
@@ -64,16 +69,19 @@ public class TelaEdicao implements ActionListener{
 			nomePatrimonio2.setBounds(90, 75, 180, 30);
 			nomeAnotacoes.setBounds(90, 120, 180, 30);
 			nomeValor.setBounds(90, 170, 180, 30);
-			nomeAmbienteElocal.setBounds(90, 220, 180, 30);
-			nomeExpiracaoeQuantidade.setBounds(90,270, 180, 30);
+			
+			nomePessoa.setBounds(90, 220, 180, 30);
+			nomeAmbienteElocal.setBounds(90, 270, 180, 30);
+			nomeExpiracaoeQuantidade.setBounds(90,320, 180, 30);
 			
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(100, 20, 300, 30);
-			Patrimonio.setBounds(170,70,180,30);
+			titulo.setBounds(140, 20, 300, 30);
+			Patrimonio.setBounds(170, 70, 180,30);
 			anotacoes.setBounds(170, 120, 180, 30);
 			valor.setBounds(170, 170, 180, 30);
-			ambiente.setBounds(170, 220, 180, 30);
-			expiracao.setBounds(170, 270, 180, 30);
+			pessoa.setBounds(170, 220, 180, 30);
+			ambiente.setBounds(170, 270, 180, 30);
+			expiracao.setBounds(170, 320, 180, 30);
 			
 			//adiciona os itens para a JFrame
 			janela.add(titulo);
@@ -84,6 +92,8 @@ public class TelaEdicao implements ActionListener{
 			janela.add(nomeAnotacoes);
 			janela.add(valor);
 			janela.add(nomeValor);
+			janela.add(pessoa);
+			janela.add(nomePessoa);
 			janela.add(ambiente);
 			janela.add(nomeAmbienteElocal);
 			janela.add(expiracao);
@@ -111,8 +121,8 @@ public class TelaEdicao implements ActionListener{
 			
 			//Define o local de cada item
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(100, 20, 300, 30);
-			Patrimonio.setBounds(170,70,200,30);
+			titulo.setBounds(140, 20, 300, 30);
+			Patrimonio.setBounds(170,70,180,30);
 			anotacoes.setBounds(170, 120, 180, 30);
 			valor.setBounds(170, 170, 180, 30);
 			local.setBounds(170, 220, 180, 30);
@@ -133,11 +143,11 @@ public class TelaEdicao implements ActionListener{
 			janela.add(nomeExpiracaoeQuantidade);
 		}
 		//define os que são comuns aos dois
-		confirmacao.setBounds(90, 320, 120, 30);
+		confirmacao.setBounds(90, 370, 120, 30);
 		confirmacao.addActionListener(this);
-		remove.setBounds(230, 320, 120, 30);
+		remove.setBounds(230, 370, 120, 30);
 		remove.addActionListener(this);
-		info.setBounds(90, 370, 260, 30);
+		info.setBounds(90, 420, 260, 30);
 		info.addActionListener(this);
 		
 		//adiciona o comum aos dois
@@ -147,8 +157,9 @@ public class TelaEdicao implements ActionListener{
 		
 		//define a janela(JFrame)
 		janela.setLayout(null);
-		janela.setSize(400, 500);
+		janela.setSize(450, 550);
 		janela.setVisible(true);
+		janela.setResizable(false);
 	}
 
 	/**
@@ -172,8 +183,9 @@ public class TelaEdicao implements ActionListener{
 				novosDados[1] = Patrimonio.getText();
 				novosDados[2] = anotacoes.getText();
 				novosDados[3] = valor.getText();
-				novosDados[4] = ambiente.getText();
-				novosDados[5] = expiracao.getText();
+				novosDados[4] = pessoa.getText();
+				novosDados[5] = ambiente.getText();
+				novosDados[6] = expiracao.getText();
 				res = armazem.adicionarEditarIntangivel(novosDados);
 				}
 			if(res == true){

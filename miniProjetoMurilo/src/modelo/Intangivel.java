@@ -7,6 +7,7 @@ package modelo;
 public class Intangivel extends Patrimonio{
 	private String tipo = "Intangivel";
 	private String ambiente;
+	private String pessoa;
 	private String expiracao;
 /**
  * Construtor da classe Intangivel
@@ -16,14 +17,15 @@ public class Intangivel extends Patrimonio{
  * @param am ambiente do Intangivel
  * @param e expiração do Intangivel
  */
-	public Intangivel(String n, String an, double v, String am, String e) {	
+	public Intangivel(String n, String an, double v, String p, String am, String e) {	
 		nome = n;
 		anotacoes = an;
 		valor = v;
+		pessoa = p;
 		ambiente = am;
 		expiracao = e;
-		
 	}
+		
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -42,6 +44,12 @@ public class Intangivel extends Patrimonio{
 	public void setValor(double valor) {
 		this.valor = valor;		
 	}
+	public String getPessoa() {
+		return pessoa;
+	}
+	public void setPessoa(String pessoa) {
+		this.pessoa = pessoa;
+	}
 	public String getAmbiente() {
 		return ambiente;
 	}
@@ -59,11 +67,24 @@ public class Intangivel extends Patrimonio{
  * @return as informações do objeto 
  */
 	public String imprimir() {
-		return "Nome: " + nome + 
+		String gay = null;
+		if(pessoa.isEmpty()) {
+			gay = "Nome: " + nome + 
 				"; \n Anotacoes: " + anotacoes +
 				"; \n Valor: " + valor +
 				"; \n Tipo: " + tipo +
 				"; \n Ambiente: " + ambiente +
 				"; \n Expiração: " + expiracao;
+		}else if(pessoa.isEmpty() != true){
+			gay = "Nome: " + nome + 
+				"; \n Anotacoes: " + anotacoes +
+				"; \n Valor: " + valor +
+				"; \n Tipo: " + tipo +
+				"; \n Pessoa: " + pessoa +
+				"; \n Ambiente: " + ambiente +
+				"; \n Expiração: " + expiracao;
+		
+	}
+		return gay;
 	}
 }

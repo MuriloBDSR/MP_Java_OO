@@ -41,10 +41,14 @@ public class ControleArmazem {
 	 * @return  boolean para acionar as janelas de erro ou sucesso
 	 */
 	public boolean adicionarEditarTangivel(String[] tangivel) {
+		if(tangivel[1].isEmpty() || tangivel[2].isEmpty() || tangivel[4].isEmpty()) {
+			return false;
+		}else {
 		Tangivel t = new Tangivel(tangivel[1], tangivel[2], Double.parseDouble(tangivel[3]), 
 				tangivel[4], Integer.parseInt(tangivel[5]));
 		a.inserirEditarTangivel(t, Integer.parseUnsignedInt(tangivel[0]));
 		return true;
+		}
 		}
 	/**
 	 * Cria ou edita um objeto Intangivel, dependendo dos dados dado pela view
@@ -52,10 +56,14 @@ public class ControleArmazem {
 	 * @return  boolean para acionar as janelas de erro ou sucesso
 	 */
 	public boolean adicionarEditarIntangivel(String[] intangivel) {
+		if(intangivel[1].isEmpty() || intangivel[2].isEmpty() || intangivel[5].isEmpty() || intangivel[6].isEmpty()) {
+			return false;
+		}else {
 			Intangivel it = new Intangivel(intangivel[1], intangivel[2], Double.parseDouble(intangivel[3]),
-					intangivel[4], intangivel[5]);
+					intangivel[4], intangivel[5], intangivel[6]);
 			a.inserirEditarIntangivel(it, Integer.parseUnsignedInt(intangivel[0]));
 			return true;
+		}
 		}
 	/**
 	 * Remove um objeto da lista Tangivel.
@@ -114,9 +122,10 @@ public class ControleArmazem {
 		 * para o topo da lista
 		 * @param nome  Nome para o parâmetro
 		 */
-		public void buscarTangivel(String nome) {
-			int tamanho = a.getTmnTangivel()-1;
+		public boolean buscarTangivel(String nome) {
+			int tamanho = a.getTmnTangivel();
 			int index = 0;
+			boolean retorno = false;
 			for(int i = 0; i < tamanho; i++) {
 				if(a.getTangivel()[index].getNome().equals(nome) != true) {
 					a.inserirEditarTangivel(a.getTangivel()[index], a.getTmnTangivel());
@@ -124,16 +133,23 @@ public class ControleArmazem {
 				}else {
 					index++;
 				}
+			if (index > 0) {
+				retorno = true;
+			}else {
+				retorno = false;
 			}
+			}
+			return retorno;
 		}
 		/**
 		 * Leva o objeto Tangivel com o mesmo nome do parâmetro
 		 * para o topo da lista
 		 * @param nome  Nome para o parâmetro
 		 */
-		public void buscarIntangivel(String nome) {
+		public boolean buscarIntangivel(String nome) {
 			int tamanho = a.getTmnIntangivel();
 			int index = 0;
+			boolean retorno = false;
 			for(int i = 0; i < tamanho; i++) {
 				if(a.getIntangivel()[index].getNome().compareTo(nome) != 0) {
 					a.inserirEditarIntangivel(a.getIntangivel()[index], a.getTmnIntangivel());
@@ -141,7 +157,13 @@ public class ControleArmazem {
 				}else {
 					index++;
 			}
-		}	
+		if (index > 0) {
+			retorno = true;
+		}else {
+			retorno = false;
+		}
+		}
+		return retorno;
 	}
 }
 

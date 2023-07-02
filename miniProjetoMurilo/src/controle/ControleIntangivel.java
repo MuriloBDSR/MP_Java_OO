@@ -51,6 +51,9 @@ public class ControleIntangivel {
 	public String getAmbiente(int i) {
 		return it[i].getAmbiente();
 	}
+	public String getPessoa(int i) {
+		return it[i].getPessoa();
+	}
 	public String getExpiracao(int i) {
 		return it[i].getExpiracao();
 	}

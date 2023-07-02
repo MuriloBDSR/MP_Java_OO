@@ -16,8 +16,8 @@ public class Armazem {
 	     */
 	    public void fillLista() {
 	    	for(int i = 0; i < 5; i++) {
-	    		tangivel[i] = new Tangivel("Tangivel"+i, "Anotação", i,"Local", i);
-	    		intangivel[i] = new Intangivel("Intangivel"+i, "Anotação",i, "Ambiente", "Coloque a data aqui");
+	    		tangivel[i] = new Tangivel("Tangivel"+(i+1), "Anotação", (i+1),"Local", (i+1));
+	    		intangivel[i] = new Intangivel("Intangivel"+(i+1), "Anotação",(i+1),"Pessoa" ,"Ambiente", "Coloque a data aqui");
 	    	}
 	    	tmnTangivel = 5;
 	    	tmnIntangivel = 5;
