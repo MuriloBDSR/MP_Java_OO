@@ -175,7 +175,7 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 			new TelaLista(armazem, 2);
 		}
 	}
-	
+
 	/**
 	 * Responsável por detectar a seleção de algum objeto dentro
 	 * da JList como os patrimonios
@@ -193,7 +193,7 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 		}
 	}
 	/**
-	 * Mensegem quando a pesquisa corresponde a nenhum item da lista
+	 * Mensagem caso o nome pesquisado não existir na lista de patrimonios
 	 */
 	public void mensagemErroFiltrar() {
 		JOptionPane.showMessageDialog(null,"NENHUM PATRIMONIO ENCONTRADO! \n"

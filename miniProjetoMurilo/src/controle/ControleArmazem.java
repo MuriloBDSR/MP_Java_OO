@@ -118,9 +118,10 @@ public class ControleArmazem {
 			}
 	}
 		/**
-		 * Leva o objeto Intangivel com o mesmo nome do parâmetro
+		 * Leva o objeto Tangivel com o mesmo nome do parâmetro
 		 * para o topo da lista
 		 * @param nome  Nome para o parâmetro
+		 * @return boolean para a tela de erro
 		 */
 		public boolean buscarTangivel(String nome) {
 			int tamanho = a.getTmnTangivel();
@@ -142,9 +143,10 @@ public class ControleArmazem {
 			return retorno;
 		}
 		/**
-		 * Leva o objeto Tangivel com o mesmo nome do parâmetro
+		 * Leva o objeto Intangivel com o mesmo nome do parâmetro
 		 * para o topo da lista
-		 * @param nome  Nome para o parâmetro
+		 * @param nome Nome para o parâmetro
+		 * @return boolean para a tela de erro
 		 */
 		public boolean buscarIntangivel(String nome) {
 			int tamanho = a.getTmnIntangivel();

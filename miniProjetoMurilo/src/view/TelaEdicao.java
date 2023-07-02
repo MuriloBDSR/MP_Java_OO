@@ -11,7 +11,7 @@ import javax.swing.*;
 /**
  * Tela para editar um patrimônio
  * @author Murilo Brandão de Souza Rodrigues
- * @Since 2023
+ * @since 2023
  */
 public class TelaEdicao implements ActionListener{
 	private JFrame janela;

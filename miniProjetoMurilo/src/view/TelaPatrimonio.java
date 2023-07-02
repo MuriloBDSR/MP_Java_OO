@@ -13,7 +13,7 @@ import controle.*;
 /**
  * Tela Para adicionar novos patrimonios
  * @author Murilo Brandão de Souza Rodrigues
- * @seince 2023
+ * @since 2023
  */
 public class TelaPatrimonio implements ItemListener, ActionListener{
 	private JFrame janela = new JFrame("Controle de Patrimonio");
