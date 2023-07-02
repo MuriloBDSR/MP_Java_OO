@@ -177,7 +177,7 @@ public class TelaLista implements ActionListener, ListSelectionListener{
 	}
 	
 	/**
-	 * esponsável por detectar a seleção de algum objeto dentro
+	 * Responsável por detectar a seleção de algum objeto dentro
 	 * da JList como os patrimonios
 	 */
 	@Override
