@@ -11,9 +11,10 @@ public class Intangivel extends Patrimonio{
 	private String expiracao;
 /**
  * Construtor da classe Intangivel
- * @param n - nome do Intangivel
+ * @param n nome do Intangivel
  * @param an anotacoes do Intangivel
  * @param v valor do Intangivel
+ * @param p pessoa do Intangivel
  * @param am ambiente do Intangivel
  * @param e expiração do Intangivel
  */
@@ -25,7 +26,8 @@ public class Intangivel extends Patrimonio{
 		ambiente = am;
 		expiracao = e;
 	}
-		
+	
+	//GETS e SETS
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -68,6 +70,7 @@ public class Intangivel extends Patrimonio{
  */
 	public String imprimir() {
 		String gay = null;
+		// caso pessoa não for colocada
 		if(pessoa.isEmpty()) {
 			gay = "Nome: " + nome + 
 				"; \n Anotacoes: " + anotacoes +
@@ -75,6 +78,7 @@ public class Intangivel extends Patrimonio{
 				"; \n Tipo: " + tipo +
 				"; \n Ambiente: " + ambiente +
 				"; \n Expiração: " + expiracao;
+			//caso pessoa for colocada
 		}else if(pessoa.isEmpty() != true){
 			gay = "Nome: " + nome + 
 				"; \n Anotacoes: " + anotacoes +

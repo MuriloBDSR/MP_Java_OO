@@ -29,6 +29,10 @@ abstract class Patrimonio {
 	public double getValor() {
 		return valor;
 	}
+	/**
+	 * Semelhante ao método toString
+	 * @return null já Patrimonio não deverá ser instanciado 
+	 */
 	public String imprimir() {
 		return null;
 	}	
